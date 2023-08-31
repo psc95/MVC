@@ -34,6 +34,8 @@
 <hr>
 	  <input type="submit" value="전송" >
 	  <input type="Reset" value="취소" >
+	  <input type="button" value="목록"
+	  onclick="location='service_List';">
 </form>
 </body>
 </html>

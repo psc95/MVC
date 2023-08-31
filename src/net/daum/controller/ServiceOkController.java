@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.daum.dao.TestDAOImpl;
+import net.daum.vo.TestVO;
+
 
 @WebServlet("/service_ok") //service_ok 매핑주소 등록
 public class ServiceOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 		/* post방식일때는 doPost()메서드를 오버라이딩을 해서 호출한다.
-		 * 
 		 */
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,6 +33,18 @@ public class ServiceOkController extends HttpServlet {
 		out.println("내용 : <strong>"+cont+"</strong><hr>");
 		out.println("<a href='service_write'>입력</a>");
 		
+		TestVO t = new TestVO();
+		t.setTitle(title); t.setContent(cont);
+		
+		TestDAOImpl tdao = new TestDAOImpl();
+		int re = tdao.testInsert(t); //저장
+		
+		if(re == 1) {
+			out.println("<script>");
+			out.println("alert('저장에 성공햇습니다!');");
+			out.println("location='service_List';");//목록보기로 이동
+			out.println("</script>");
+		}
 		out.close();//출력스트림을 닫는다.
 	}
 

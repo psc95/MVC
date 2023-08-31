@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Mvc</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- /service_List 매핑주소 등록  -->
+  <servlet>
+    <servlet-name>ServiceListController</servlet-name> <!-- 서블릿 클래스명 -->
+    <servlet-class>net.daum.controller.ServiceListController</servlet-class>
+    <!-- 풀 패키지 경로 -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceListController</servlet-name>
+    <url-pattern>/service_List</url-pattern> <!-- service_List 매핑주소 설정 -->
+  </servlet-mapping>
+  
+   <!-- 서블릿 컨트롤러 구조를 서블릿 하나당 다수의 매핑주소가 실행되는 구조로 변경 -->
+   <servlet>
+    <servlet-name>MFrontController</servlet-name> <!-- 서블릿 클래스명 -->
+    <servlet-class>net.daum.controller.MFrontController</servlet-class>
+    <!-- 풀패키지 경로 -->
+   </servlet>
+   <servlet-mapping>
+     <servlet-name>MFrontController</servlet-name>
+     <url-pattern>*.daum</url-pattern> <!-- 매핑주소 확장자 .daum설정 -->
+   </servlet-mapping>
+</web-app>
+
+
+
+
+
+
